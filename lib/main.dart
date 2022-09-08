@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:thermo_ieee_app/helpers/colors.dart';
+import 'package:thermo_ieee_app/main_models/customer.dart';
+import 'package:thermo_ieee_app/main_models/worker.dart';
+import 'package:thermo_ieee_app/source/firebase/firestore_helper.dart';
 
 void main() {
   runApp(const MyApp());

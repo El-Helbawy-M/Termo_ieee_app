@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppTextStyles{
+abstract class AppTextStyles{
   /// - weight: w500
   /// - family: 
   static const TextStyle w500 =  TextStyle(fontWeight: FontWeight.w500);
