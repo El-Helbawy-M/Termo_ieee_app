@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-
+import 'package:thermo_ieee_app/services/authentication/screens/login_screen.dart';
+import 'package:thermo_ieee_app/services/authentication/screens/register_screen.dart';
+import 'package:thermo_ieee_app/services/authentication/widgets/customer_register.dart';
 import 'package:thermo_ieee_app/services/chat/screens/chats.dart';
-
 import 'package:thermo_ieee_app/helpers/colors.dart';
 import 'package:thermo_ieee_app/main_models/customer.dart';
 import 'package:thermo_ieee_app/main_models/worker.dart';
+import 'package:thermo_ieee_app/services/notifications/screens/notification_screens.dart';
 import 'package:thermo_ieee_app/source/firebase/firestore_helper.dart';
 
 
@@ -19,11 +21,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'AFT app',
       theme: ThemeData(
+        fontFamily:'Cairo',
         primarySwatch: Colors.blue,
       ),
-      home: const Chats(),
+      home: const RegisterScreen(),
     );
   }
 }
