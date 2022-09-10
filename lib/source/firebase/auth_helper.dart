@@ -7,5 +7,5 @@ class FirebaseAuther{
   /// ## Register Method
   /// 
   
-  register()
+  // register()
 }
