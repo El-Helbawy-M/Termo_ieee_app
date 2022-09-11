@@ -7,6 +7,7 @@ import 'package:thermo_ieee_app/helpers/colors.dart';
 import 'package:thermo_ieee_app/main_models/customer.dart';
 import 'package:thermo_ieee_app/main_models/worker.dart';
 import 'package:thermo_ieee_app/services/notifications/screens/notification_screens.dart';
+import 'package:thermo_ieee_app/services/splash/screens/splash_screen.dart';
 import 'package:thermo_ieee_app/source/firebase/firestore_helper.dart';
 
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         fontFamily:'Cairo',
         primarySwatch: Colors.blue,
       ),
-      home: const RegisterScreen(),
+      home: const SplashScreen(),
     );
   }
 }
