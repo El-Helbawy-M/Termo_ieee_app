@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thermo_ieee_app/services/notification/pages/notificaion_view.dart';
 import 'package:thermo_ieee_app/services/notification/widgets/appbar_textfield.dart';
 
 import '../widgets/notification_box.dart';
@@ -29,7 +30,12 @@ class Notificationpage extends StatelessWidget {
               children: [
                 Boxnotify(
                   message: notification[index],
-                  ontab: () {},
+                  ontab: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Notificationview()),
+                    );
+                  },
                   path: 'assets/images/photo1.jpg',
                 ),
                 const Divider(
