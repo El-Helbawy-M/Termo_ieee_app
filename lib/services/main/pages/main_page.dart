@@ -6,7 +6,9 @@ import 'package:thermo_ieee_app/helpers/colors.dart';
 import 'package:thermo_ieee_app/helpers/icons.dart';
 import 'package:thermo_ieee_app/services/home/pages/home_page.dart';
 
+import '../../chat/pages/chats.dart';
 import '../../notification/pages/notification_page.dart';
+import '../../profile/pages/service_provider_profile.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -18,7 +20,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   // variables
   int currentScreen = 0;
-  List<Widget> screens = const [HomePage(), SizedBox(), Notificationpage(), SizedBox()];
+  List<Widget> screens = const [HomePage(), Chats(), Notificationpage(), ServiceProviderProfile()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

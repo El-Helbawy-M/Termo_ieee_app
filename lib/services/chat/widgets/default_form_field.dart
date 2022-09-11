@@ -2,7 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:thermo_ieee_app/helpers/colors.dart';
 
 class DefaultFormField extends StatelessWidget {
-  const DefaultFormField({Key? key, this.isClickable = true, this.isPassword = false, required this.controller, required this.type, this.onSubmit, this.onChange, this.onTap, required this.validate, required this.hint,  this.prefix, this.suffix, this.suffixPressed}) : super(key: key);
+  const DefaultFormField(
+      {Key? key,
+      this.isClickable = true,
+      this.isPassword = false,
+      required this.controller,
+      required this.type,
+      this.onSubmit,
+      this.onChange,
+      this.onTap,
+      required this.validate,
+      required this.hint,
+      this.prefix,
+      this.suffix,
+      this.suffixPressed})
+      : super(key: key);
   final TextEditingController controller;
   final TextInputType type;
   final ValueChanged? onSubmit;
@@ -15,6 +29,7 @@ class DefaultFormField extends StatelessWidget {
   final IconData? suffix;
   final VoidCallback? suffixPressed;
   final bool isClickable;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -28,8 +43,8 @@ class DefaultFormField extends StatelessWidget {
       validator: validate,
       decoration: InputDecoration(
         hintText: hint,
-        contentPadding: const EdgeInsets.symmetric(horizontal:16),
-        prefixIcon:prefix??null,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+        prefixIcon: prefix,
         isDense: true,
         suffixIcon: suffix != null
             ? IconButton(
@@ -41,12 +56,12 @@ class DefaultFormField extends StatelessWidget {
               )
             : null,
         focusedBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(5)),
-          borderSide: BorderSide(width: 1,color: AppColors.mainColor),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderSide: BorderSide(width: 1, color: AppColors.mainColor),
         ),
         enabledBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(5)),
-          borderSide: BorderSide(width: 1,color: Colors.grey),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderSide: BorderSide(width: 1, color: Colors.grey),
         ),
       ),
     );
