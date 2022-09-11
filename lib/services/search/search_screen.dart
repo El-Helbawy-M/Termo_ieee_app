@@ -36,7 +36,6 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                 ),
                 IconButton(onPressed: (){}, icon: Icon(Icons.filter))
-
               ],
             )
           ],
