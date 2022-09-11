@@ -11,8 +11,8 @@ class Chats extends StatelessWidget {
     final TextEditingController searchController = TextEditingController();
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    return Scaffold(
-      body: Padding(
+    return
+       Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
@@ -35,7 +35,7 @@ class Chats extends StatelessWidget {
             )
           ],
         ),
-      ),
+
     );
   }
 }
