@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thermo_ieee_app/services/authentication/widgets/text_form_auth.dart';
+import 'package:thermo_ieee_app/services/filter/widgets/filter_dropdown.dart';
+
 class WorkerRegister extends StatefulWidget {
   const WorkerRegister({Key? key}) : super(key: key);
 
@@ -8,8 +10,8 @@ class WorkerRegister extends StatefulWidget {
 }
 
 class _WorkerRegisterState extends State<WorkerRegister> {
-  String selectedLetter='نجارة';
-  List items = ['نجارة', 'سباكة', 'خياطة','كهرباء','تشطيب','ق','ش'];
+  String? selectedLetter;
+  List items = ['نجارة', 'سباكة', 'خياطة', 'كهرباء', 'تشطيب', 'ق', 'ش'];
 
   @override
   Widget build(BuildContext context) {
@@ -23,23 +25,10 @@ class _WorkerRegisterState extends State<WorkerRegister> {
           SizedBox(
             height: 20,
           ),
-          DropdownButtonFormField<String>(
-            icon: Icon(Icons.keyboard_arrow_down),
-              decoration: InputDecoration(labelText: 'الخدمة'),
-              value: selectedLetter,
-              items: items
-                  .map(
-                    (item) => DropdownMenuItem<String>(
-                      value: item,
-                        child: Text(item)),
-                  )
-                  .toList(),
-              onChanged: ( val) {
-                setState(() {
-                  selectedLetter = val!;
-                });
-              }
-              ),
+          FilterDropdown(
+            text: 'الخدمة',
+            items: items
+          ),
           SizedBox(
             height: 20,
           ),
