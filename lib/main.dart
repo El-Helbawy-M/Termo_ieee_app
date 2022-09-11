@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:thermo_ieee_app/services/main/pages/main_page.dart';
+import 'package:thermo_ieee_app/services/search/search_screen.dart';
+import 'package:thermo_ieee_app/services/splash/screens/splash_screen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
         }
         return supportedLangs.first;
       },
-      home: MainPage(),
+      home: SearchScreen(),
     );
   }
 }
