@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:thermo_ieee_app/services/authentication/screens/login_screen.dart';
+import 'package:thermo_ieee_app/services/filter/screens/filter_screen.dart';
+import 'package:thermo_ieee_app/services/filter/widgets/filter_dropdown.dart';
 import 'package:thermo_ieee_app/services/main/pages/main_page.dart';
 import 'package:thermo_ieee_app/services/search/search_screen.dart';
 import 'package:thermo_ieee_app/services/splash/screens/splash_screen.dart';
@@ -40,7 +43,7 @@ class MyApp extends StatelessWidget {
         }
         return supportedLangs.first;
       },
-      home: SearchScreen(),
+      home:FilterScreen(),
     );
   }
 }
