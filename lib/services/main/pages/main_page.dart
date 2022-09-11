@@ -1,8 +1,12 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:thermo_ieee_app/componants/custom_image.dart';
 import 'package:thermo_ieee_app/helpers/colors.dart';
 import 'package:thermo_ieee_app/helpers/icons.dart';
 import 'package:thermo_ieee_app/services/home/pages/home_page.dart';
+
+import '../../notification/pages/notification_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -14,7 +18,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   // variables
   int currentScreen = 0;
-  List<Widget> screens = const [HomePage(), SizedBox(), SizedBox(), SizedBox()];
+  List<Widget> screens = const [HomePage(), SizedBox(), Notificationpage(), SizedBox()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
