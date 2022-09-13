@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:thermo_ieee_app/helpers/colors.dart';
 
 import '../../../helpers/text_styles.dart';
-import '../pages/chat_details.dart';
+import '../pages/chat_room_screen.dart';
 
 class BuildChatItems extends StatelessWidget {
   const BuildChatItems({
@@ -16,12 +16,12 @@ class BuildChatItems extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const ChatDetailsScreen()));
+                builder: (context) => const ChatRoomScreen()));
       },
       child: Container(
         height: 60,
         margin: const EdgeInsets.symmetric(vertical: 8),
-        decoration: const BoxDecoration(border: Border(bottom: BorderSide(width: 1,color: Colors.grey),),),
+        decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 1,color: Colors.grey[300]!),),),
         child: Row(
           children: [
             const CircleAvatar(

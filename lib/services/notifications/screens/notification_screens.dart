@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thermo_ieee_app/services/chat/widgets/searchRow.dart';
+import 'package:thermo_ieee_app/services/chat/widgets/searchBar.dart';
 
 import '../../../helpers/text_styles.dart';
 
