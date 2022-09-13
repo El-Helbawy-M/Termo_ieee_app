@@ -26,17 +26,28 @@ class Notificationpage extends StatelessWidget {
         child: ListView.builder(
           itemCount: notification.length,
           itemBuilder: (BuildContext context, int index) {
+
             return Column(
               children: [
-                Boxnotify(
-                  message: notification[index],
-                  ontab: () {
+                InkWell(
+                  onTap:(){
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const Notificationview()),
                     );
-                  },
-                  path: 'assets/images/photo1.jpg',
+                  } ,
+                  child: Boxnotify(
+                    message: notification[index],
+
+
+                    path: 'assets/images/photo1.jpg',
+                  //   ontab: (){
+                  //   Navigator.push(
+                  //         context,
+                  //          MaterialPageRoute(builder: (context) => const Notificationview()),
+                  //        );
+                  // },
+                  ),
                 ),
                 const Divider(
                   thickness: 1.5,
