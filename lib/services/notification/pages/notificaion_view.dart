@@ -22,7 +22,7 @@ class Notificationview extends StatelessWidget {
               //mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Circleimg(path: 'assets/images/photo1.jpg', radio: 100),
+                CircleImage(path: 'assets/images/photo1.jpg', radio: 100),
                 Container(
                     height: MediaQueryHelper.height(context) * 0.4,
                     width: 300,
