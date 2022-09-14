@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:thermo_ieee_app/services/authentication/screens/register_screen.dart';
 import 'package:thermo_ieee_app/services/authentication/widgets/logo.dart';
+import 'package:thermo_ieee_app/services/home/pages/home_page.dart';
+import 'package:thermo_ieee_app/source/firebase/auth_helper.dart';
 import '../widgets/clickable_container.dart';
 import '../widgets/route_button.dart';
 import '../widgets/screen_title.dart';
 import '../widgets/text_form_auth.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -13,7 +16,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final GlobalKey<FormState> _formKey=GlobalKey();
+  final GlobalKey<FormState> _formKey = GlobalKey();
+  String? email, password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,30 +42,58 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 20,
                   ),
                   TextFormAuth(
-                    title: 'الاسم بالكامل',
+                    title: 'البريد الالكتروني',
+                    save: (value) {
+                      FirebaseAuther().email = value;
+                    },
+                    validate: (value) {
+                      if (value == null) print('Error');
+                    },
+                    input: TextInputType.emailAddress,
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   TextFormAuth(
-                    title: 'البريد الالكتروني',
+                    title: 'كلمة المرور',
+                    save: (value) {
+                      FirebaseAuther().password = value;
+                    },
+                    validate: (value) {
+                      if (value == null) print('Error');
+                    },
+                    input: TextInputType.visiblePassword,
+                    value: true,
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   RoutetButton(
                     title: 'دخول',
-                    submit: (){},
+                    submit: () {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                        FirebaseAuther().signInWithEmail();
+                      }
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: ((context) => HomePage())));
+                    },
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [ ClickableContainer(
-                    title: 'انشاء حساب جديد؟',route: RegisterScreen(),
-                  ), ClickableContainer(
-                    title: 'نسيت كلمة المرور؟',
-                  ),],)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ClickableContainer(
+                        title: 'انشاء حساب جديد؟',
+                        route: RegisterScreen(),
+                      ),
+                      ClickableContainer(
+                        title: 'نسيت كلمة المرور؟',
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),

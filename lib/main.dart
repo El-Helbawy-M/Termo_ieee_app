@@ -1,10 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:thermo_ieee_app/services/authentication/screens/login_screen.dart';
 import 'package:thermo_ieee_app/services/home/pages/home_page.dart';
 import 'package:thermo_ieee_app/services/main/pages/main_page.dart';
+import 'package:thermo_ieee_app/services/notification/pages/notificaion_view.dart';
+import 'package:thermo_ieee_app/services/notification/pages/notification_page.dart';
 import 'package:thermo_ieee_app/services/search/search_screen.dart';
 import 'package:thermo_ieee_app/services/splash/screens/splash_screen.dart';
-void main() {
+
+void main() async  {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(  );
   runApp(const MyApp());
 }
 
@@ -41,7 +49,7 @@ class MyApp extends StatelessWidget {
         }
         return supportedLangs.first;
       },
-      home: MainPage(),
+      home: LoginScreen(),
     );
   }
 }
