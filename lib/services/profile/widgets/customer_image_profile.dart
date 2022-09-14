@@ -7,37 +7,43 @@ class ImageProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    return SizedBox(
-      height: 220,
-      child: Stack(
-        alignment: AlignmentDirectional.bottomStart,
-        children: [
-          Align(
-            alignment: AlignmentDirectional.topCenter,
-            child: Container(
-              height: height/5,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  image: const DecorationImage(
-                    image: NetworkImage(
-                        'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1662731306~exp=1662731906~hmac=215f3ef61a73b08d1803abd3aa3d8ecdf2471a584839b62e8db872a7b65cdf53'),
-                    fit: BoxFit.cover,
-                  )),
+    return Stack(
+      alignment: AlignmentDirectional.bottomStart,
+      clipBehavior: Clip.none,
+      children: [
+        Container(
+          height: 220,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            image: const DecorationImage(
+              image: NetworkImage(
+                  'https://th.bing.com/th/id/R.af87fe3928d3df619adb13e8b0814def?rik=%2fHt7Kf%2fxfpp%2bnw&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f6%2f4%2fd%2f1123250-swiss-alps-wallpaper-3840x2160-for-pc.jpg&ehk=Hw82KRA6UKLMhdX%2feKHrZ6lCJNn5L6cuP5U6fGZgrdk%3d&risl=&pid=ImgRaw&r=0'),
+              fit: BoxFit.fill,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: CircleAvatar(
-              radius: 30,
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              child: IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.edit)),
+        ),
+        Positioned(
+          left: 24,
+          bottom: -25,
+          child: Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 5,
+                  spreadRadius: 1,
+                  color: Colors.black.withOpacity(.1),
+                )
+              ],
+              shape: BoxShape.circle,
             ),
+            child: IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

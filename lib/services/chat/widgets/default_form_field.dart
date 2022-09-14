@@ -6,7 +6,7 @@ class DefaultFormField extends StatelessWidget {
       {Key? key,
       this.isClickable = true,
       this.isPassword = false,
-      required this.controller,
+      this.controller,
       required this.type,
       this.onSubmit,
       this.onChange,
@@ -17,7 +17,7 @@ class DefaultFormField extends StatelessWidget {
       this.suffix,
       this.suffixPressed})
       : super(key: key);
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final TextInputType type;
   final ValueChanged? onSubmit;
   final ValueChanged? onChange;
@@ -56,11 +56,11 @@ class DefaultFormField extends StatelessWidget {
               )
             : null,
         focusedBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius: BorderRadius.all(Radius.circular(5)),
           borderSide: BorderSide(width: 1, color: AppColors.mainColor),
         ),
         enabledBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius: BorderRadius.all(Radius.circular(5)),
           borderSide: BorderSide(width: 1, color: Colors.grey),
         ),
       ),
