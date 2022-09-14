@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:thermo_ieee_app/services/main/pages/main_page.dart';
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'package:thermo_ieee_app/services/authentication/screens/login_screen.dart';
+import 'firebase_options.dart';
+
+void main() async  {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp( options: DefaultFirebaseOptions.currentPlatform );
   runApp(const MyApp());
 }
 
@@ -16,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Thermo App',
       theme: ThemeData(fontFamily: "default"),
       routes: {
-        "/":(context)=>MainPage(),
+        "/":(context)=>LoginScreen(),
       },
 
       // to tell the app what the language should support
@@ -42,7 +48,8 @@ class MyApp extends StatelessWidget {
         }
         return supportedLangs.first;
       },
-      initialRoute: "/",
+     initialRoute: "/",
+    //  home: LoginScreen(),
     );
   }
 }
