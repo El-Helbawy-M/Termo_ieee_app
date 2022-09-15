@@ -18,7 +18,8 @@ class NotificationPage extends StatelessWidget {
           Expanded(
               child: SingleChildScrollView(
             child: Column(
-              children: notification
+              children:
+              notification
                   .map(
                     (message) => BoxNotification(
                       message: message,
