@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:thermo_ieee_app/config/providers.dart';
+import 'package:thermo_ieee_app/navigation/routes.dart';
+import 'package:thermo_ieee_app/services/authentication/screens/register_screen.dart';
+import 'package:thermo_ieee_app/services/home/pages/home_page.dart';
 import 'package:thermo_ieee_app/services/main/pages/main_page.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:thermo_ieee_app/services/authentication/screens/login_screen.dart';
+import 'package:thermo_ieee_app/source/shared_helper.dart';
+import 'firebase_options.dart';
 import 'navigation/navigator.dart';
 
-void main() {
+void main() async  {
+  SharedHelper.init();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp( options: DefaultFirebaseOptions.currentPlatform );
   runApp(const MyApp());
 }
 
@@ -22,13 +31,12 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Thermo App',
         theme: ThemeData(fontFamily: "default"),
-        routes: {
-          "/": (context) => MainPage(),
-        },
+        initialRoute: Routes.login,
 
         navigatorKey: CustomNavigator.navigatorState,
         navigatorObservers: [CustomNavigator.routeObserver],
         scaffoldMessengerKey: CustomNavigator.scaffoldState,
+        onGenerateRoute: CustomNavigator.onCreateRoute,
 
         // to tell the app what the language should support
         supportedLocales: const [Locale("en"), Locale("ar")],
@@ -54,7 +62,8 @@ class MyApp extends StatelessWidget {
           }
           return supportedLangs.first;
         },
-        initialRoute: "/",
+        home: const MainPage(),
+        // initialRoute: "/",
       ),
     );
   }

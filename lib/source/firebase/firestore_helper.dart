@@ -9,23 +9,27 @@ class FirestoreHelper {
 
   Future<dynamic> get(FirebaseUrl url, Mapper model) async {
     if (url.documentId != null) {
-      var response = await database.collection(url.collection).doc(url.documentId).get();
-      if(response.exists){
-        Map<String,dynamic> data = response.data()!;
+      var response =
+          await database.collection(url.collection).doc(url.documentId).get();
+      if (response.exists) {
+        Map<String, dynamic> data = response.data()!;
         return Mapper(model, data);
-      }
-      else {
+      } else {
         return model;
       }
     } else {
       var response = await database.collection(url.collection).get();
-      if(response.docs.isNotEmpty){
-        List<Map<String,dynamic>> data = response.docs.map((e) => e.data()).toList();
+      if (response.docs.isNotEmpty) {
+        List<Map<String, dynamic>> data =
+            response.docs.map((e) => e.data()).toList();
         return Mapper(model, data);
-      }
-      else {
+      } else {
         return model;
       }
     }
+  }
+
+  Future<dynamic> post(String collection,String id, Map<String,dynamic> data) async {
+    var response = await database.collection(collection).doc(id).set(data);
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:thermo_ieee_app/navigation/navigator.dart';
 
 // info: this file is recommended and created form Flutter team
 // jop: it's resposable of returning the text you want by specifing the key
@@ -51,3 +52,5 @@ class _AppLocalDelegate extends LocalizationsDelegate<AppLocale> {
 getLang(BuildContext context, String key) {
   return AppLocale.of(context).getTranslated(key);
 }
+
+String currentLang()=>AppLocale.of(CustomNavigator.navigatorState.currentContext!).locale.languageCode;

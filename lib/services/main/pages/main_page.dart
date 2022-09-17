@@ -6,6 +6,7 @@ import 'package:thermo_ieee_app/services/profile/blocs/customer_profile_bloc.dar
 
 import '../../chat/pages/chats.dart';
 import '../../notification/pages/notification_page.dart';
+import '../../products/screen/products_screen.dart';
 import '../../profile/pages/customer_profile.dart';
 
 class MainPage extends StatefulWidget {
