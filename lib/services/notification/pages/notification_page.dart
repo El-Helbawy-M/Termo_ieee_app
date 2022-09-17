@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:thermo_ieee_app/services/notification/pages/notificaion_view.dart';
 
 import '../../chat/widgets/searchBar.dart';
-import '../widgets/appbar_textfield.dart';
+
 import '../widgets/notification_box.dart';
 
 class NotificationPage extends StatelessWidget {
@@ -18,7 +18,8 @@ class NotificationPage extends StatelessWidget {
           Expanded(
               child: SingleChildScrollView(
             child: Column(
-              children: notification
+              children:
+              notification
                   .map(
                     (message) => BoxNotification(
                       message: message,

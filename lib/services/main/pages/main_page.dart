@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thermo_ieee_app/componants/custom_image.dart';
+
 import 'package:thermo_ieee_app/helpers/colors.dart';
 import 'package:thermo_ieee_app/services/home/pages/home_page.dart';
 import 'package:thermo_ieee_app/services/profile/blocs/customer_profile_bloc.dart';

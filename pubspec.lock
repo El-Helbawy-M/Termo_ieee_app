@@ -99,6 +99,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
+<<<<<<< HEAD
   ffi:
     dependency: transitive
     description:
@@ -113,6 +114,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.4"
+=======
+>>>>>>> bdd09676e42f2106b977133b796773b0d40f220a
   firebase_auth:
     dependency: "direct main"
     description:
@@ -350,6 +353,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
+<<<<<<< HEAD
   process:
     dependency: transitive
     description:
@@ -357,6 +361,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
+=======
+>>>>>>> bdd09676e42f2106b977133b796773b0d40f220a
   provider:
     dependency: transitive
     description:
@@ -364,6 +370,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.0.3"
+<<<<<<< HEAD
   shared_preferences:
     dependency: "direct main"
     description:
@@ -420,6 +427,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+=======
+>>>>>>> bdd09676e42f2106b977133b796773b0d40f220a
   sky_engine:
     dependency: transitive
     description: flutter
