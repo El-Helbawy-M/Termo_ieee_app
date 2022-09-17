@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:thermo_ieee_app/helpers/colors.dart';
+import 'package:thermo_ieee_app/helpers/text_styles.dart';
 
 class TextFormAuth extends StatelessWidget {
   final TextEditingController? controller;
-  final String? title;
+  final String? title, initValue;
   final String? Function(String? val)? validate;
   final Function(dynamic)? save;
   final TextInputType? input;
@@ -11,6 +12,7 @@ class TextFormAuth extends StatelessWidget {
 
   const TextFormAuth(
       {this.title,
+      this.initValue,
       this.validate,
       this.save,
       this.input,
@@ -19,22 +21,31 @@ class TextFormAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      obscureText: value!,
-      onSaved: save,
-      validator: validate,
-      keyboardType: input,
-      decoration: InputDecoration(
-          fillColor: AppColors.hintFieldColor,
-          filled: true,
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: AppColors.borderColor),
+    return Container(
+      height: 55,
+      
+      decoration: BoxDecoration(color: AppColors.hintFieldColor,borderRadius: BorderRadius.circular(5)),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Center(
+        child: TextFormField(
+          controller: controller,
+          obscureText: value!,
+          onSaved: save,
+          validator: validate,
+          keyboardType: input,
+          initialValue: initValue,
+          style: AppTextStyles.w600.copyWith(fontSize: 12,color: Colors.black),
+          decoration: InputDecoration(
+            // fillColor: ,
+            // filled: true,
+            border: const UnderlineInputBorder(borderSide: BorderSide.none),
+            labelText: title,
+            labelStyle:
+                AppTextStyles.w600.copyWith(fontSize: 13, color: Colors.grey),
+            alignLabelWithHint: false,
           ),
-          disabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
-          labelText: title,
-          labelStyle: TextStyle(fontSize: 16, color: AppColors.mainColor),
-          alignLabelWithHint: false),
+        ),
+      ),
     );
   }
 }

@@ -25,7 +25,6 @@ class _WorkerRegisterState extends State<WorkerRegister> {
             title: 'الرقم القومي',
             input: TextInputType.number,
             save: (value) {
-              FirebaseAuther().nationalID = value;
             },
             validate: (value) {
               if (value == null) print('Error');
@@ -42,7 +41,6 @@ class _WorkerRegisterState extends State<WorkerRegister> {
             title: 'رقم الموبايل',
             input: TextInputType.phone,
             save: (value) {
-              FirebaseAuther().phoneNumber = value;
             },
             validate: (value) {
               if (value == null) print('Error');
@@ -55,7 +53,6 @@ class _WorkerRegisterState extends State<WorkerRegister> {
             title: 'العنوان',
             input: TextInputType.streetAddress,
             save: (value) {
-              FirebaseAuther().address = value;
             },
             validate: (value) {
               if (value == null) print('Error');

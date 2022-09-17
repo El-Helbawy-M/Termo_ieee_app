@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thermo_ieee_app/services/authentication/screens/register_screen.dart';
 import 'package:thermo_ieee_app/services/authentication/widgets/logo.dart';
-import 'package:thermo_ieee_app/services/home/pages/home_page.dart';
-import 'package:thermo_ieee_app/services/main/pages/main_page.dart';
 import 'package:thermo_ieee_app/source/firebase/auth_helper.dart';
 import '../widgets/clickable_container.dart';
 import '../widgets/route_button.dart';
@@ -18,8 +16,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey();
-  TextEditingController? emailTextController=TextEditingController();
-  TextEditingController? passwordTextController=TextEditingController();
+  TextEditingController? emailTextController = TextEditingController();
+  TextEditingController? passwordTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +80,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
                         FirebaseAuther().signInWithEmail(
-                            context: context,
                             password: passwordTextController!.text,
                             email: emailTextController!.text);
                       }
