@@ -12,7 +12,7 @@ class Customer extends AppUser implements SingleMapper{
     customer.address = json['address'];
     customer.city = json['city'];
     customer.id = json['id'];
-    customer.phone = json['phone'];
+    customer.phone = json['phone'] is String? int.parse(json['phone']):json['phone'];
     customer.email = json['email'];
     return customer;
   }

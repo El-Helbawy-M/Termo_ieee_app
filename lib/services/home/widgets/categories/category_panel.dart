@@ -19,7 +19,7 @@ class _CategoriesPanelState extends State<CategoriesPanel> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQueryHelper.width(context),
+      width: MediaQueryHelper.width,
       height: 55,
       child: ListView(
         scrollDirection: Axis.horizontal,

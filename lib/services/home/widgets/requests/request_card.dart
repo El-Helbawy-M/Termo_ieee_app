@@ -19,17 +19,17 @@ class RequestCard extends StatelessWidget {
         border: Border.all(width: 1, color: Colors.grey),
       ),
       margin: const EdgeInsets.symmetric(vertical: 8),
-      height: 155,
+      height: 160,
       child: Row(
         children: [
           Container(
               decoration: const BoxDecoration(
                 color: AppColors.active,
                 borderRadius: BorderRadius.horizontal(
-                  left: Radius.circular(5),
+                  left: Radius.circular(4),
                 ),
               ),
-              height: 155,
+              height: 160,
               width: 8),
           Expanded(
             child: Padding(

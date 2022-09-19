@@ -3,18 +3,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../services/authentication/bloc/authentication_bloc.dart';
 
 class SharedHelper {
-  static late SharedHelper instance;
+  static late SharedHelper instance = SharedHelper();
   late SharedPreferences pref;
-  SharedHelper();
-  SharedHelper.init(){
-    inithilize();
-    instance = SharedHelper();
-  }
   Future<void> inithilize()async=> pref = await SharedPreferences.getInstance();
   
   Future<bool> setToken(String id,String lang,UserType type) async {
     pref.setString("lang", lang);
     pref.setString("type", type == UserType.customer?"customer":"worker");
+    print(id);
     return pref.setString("id", id);
   }
 

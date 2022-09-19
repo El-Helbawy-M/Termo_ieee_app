@@ -8,7 +8,7 @@ import '../bloc/authentication_bloc.dart';
 
 class AuthenticationRepo {
   Future<String> _callShared(String id,UserType type) async {
-    await SharedHelper.instance.setToken(id, currentLang(),type);
+    await SharedHelper.instance.setToken(id, "en",type);
     return SharedHelper.instance.getToken();
   }
 

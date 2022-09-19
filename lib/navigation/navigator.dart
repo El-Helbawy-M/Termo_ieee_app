@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:thermo_ieee_app/navigation/routes.dart';
+import 'package:thermo_ieee_app/services/authentication/screens/login_screen.dart';
+import 'package:thermo_ieee_app/services/authentication/screens/register_screen.dart';
 import 'package:thermo_ieee_app/services/main/pages/main_page.dart';
+import 'package:thermo_ieee_app/services/splash/screens/splash_screen.dart';
 
 const begin = Offset(0.0, 1.0);
 const end = Offset.zero;
@@ -23,6 +26,39 @@ class CustomNavigator {
         return PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) =>
               const MainPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return SlideTransition(
+              position: animation.drive(tween),
+              child: child,
+            );
+          },
+        );
+        case Routes.login:
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              const LoginScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return SlideTransition(
+              position: animation.drive(tween),
+              child: child,
+            );
+          },
+        );
+        case Routes.register:
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              const RegisterScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return SlideTransition(
+              position: animation.drive(tween),
+              child: child,
+            );
+          },
+        );
+        case Routes.splash:
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              const SplashScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return SlideTransition(
               position: animation.drive(tween),
