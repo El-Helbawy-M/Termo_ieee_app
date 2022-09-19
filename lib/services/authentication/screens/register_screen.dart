@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:thermo_ieee_app/config/app_states.dart';
 import 'package:thermo_ieee_app/helpers/colors.dart';
 import '../../../source/firebase/auth_helper.dart';
 import '../../main/pages/main_page.dart';
+import '../bloc/authentication_bloc.dart';
 import '../screens/login_screen.dart';
 import '../widgets/customer_register.dart';
 import '../widgets/clickable_container.dart';
@@ -22,8 +25,6 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey();
   bool selected = true;
-  TextEditingController? emailTextController = TextEditingController();
-  TextEditingController? passwordTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,80 +42,83 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const Logo(),
                 const ScreenTitle(title: 'تسجيل مستخدم جديد'),
                 Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: RegisterType(
-                                  title: '   مستخدم    ',
-                                  function: () {
-                                    setState(() {
-                                      selected = true;
-                                    });
-                                  },
-                                  textColor: selected
-                                      ? AppColors.mainColor
-                                      : AppColors.hintColor,
-                                  color: selected
-                                      ? AppColors.mainColor
-                                      : Colors.white,
-                                ),
+                  child: BlocBuilder<AuthenticationBloc, AppStates>(
+                    builder: (context, state) {
+                      return state is Loading
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                          child: RegisterType(
+                                            title: '   مستخدم    ',
+                                            function: () {
+                                              setState(() {
+                                                selected = true;
+                                                AuthenticationBloc.instance
+                                                    .setType(UserType.customer);
+                                              });
+                                            },
+                                            textColor: selected
+                                                ? AppColors.mainColor
+                                                : AppColors.hintColor,
+                                            color: selected
+                                                ? AppColors.mainColor
+                                                : Colors.white,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 24),
+                                        Expanded(
+                                          child: RegisterType(
+                                            title: ' صاحب عمل',
+                                            function: () {
+                                              setState(() {
+                                                selected = false;
+
+                                                AuthenticationBloc.instance
+                                                    .setType(UserType.worker);
+                                              });
+                                            },
+                                            textColor: !selected
+                                                ? AppColors.mainColor
+                                                : AppColors.hintColor,
+                                            color: !selected
+                                                ? AppColors.mainColor
+                                                : Colors.white,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  CustomerRegister(selected),
+                                ],
                               ),
-                              const SizedBox(width: 24),
-                              Expanded(
-                                child: RegisterType(
-                                  title: ' صاحب عمل',
-                                  function: () {
-                                    setState(() {
-                                      selected = false;
-                                    });
-                                  },
-                                  textColor: !selected
-                                      ? AppColors.mainColor
-                                      : AppColors.hintColor,
-                                  color: !selected
-                                      ? AppColors.mainColor
-                                      : Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        CustomerRegister(
-                          emailController: emailTextController,
-                          passwordController: passwordTextController,
-                        ),
-                        if (!selected) const WorkerRegister(),
-
-
-
-
-
-                        
-                      ],
-                    ),
+                            );
+                    },
                   ),
                 ),
                 RoutetButton(
                   title: 'تسجيل',
                   submit: () {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      FirebaseAuther().signUpWithEmail(
-                          email: emailTextController!.text,
-                          password: passwordTextController!.text);
-                    } else
-                      print('error');
+                    // if (_formKey.currentState!.validate()) {
+                      // _formKey.currentState!.save();
+                      AuthenticationBloc.instance.register();
+                    // } else
+                      // print('error');
                   },
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     ClickableContainer(
                       title: 'تسجيل الدخول',
                       route: LoginScreen(),

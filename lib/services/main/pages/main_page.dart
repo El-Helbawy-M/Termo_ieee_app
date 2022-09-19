@@ -19,13 +19,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   // variables
   int currentScreen = 0;
-  List<Widget> screens = const [HomePage(),ChatsPage(), NotificationPage(),  CustomerProfile()];
+  List<Widget> screens =  [const HomePage(),const ChatsPage(), NotificationPage(), const CustomerProfile()];
 
-  @override
-  void initState() {
-    CustomerProfileBloc.instance.getProfile("id");
-    super.initState();
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

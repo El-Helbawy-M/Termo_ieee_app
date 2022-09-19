@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thermo_ieee_app/helpers/text_styles.dart';
 import 'package:thermo_ieee_app/services/chat/widgets/searchBar.dart';
-import 'package:thermo_ieee_app/services/notification/pages/notification_page.dart';
 import 'package:thermo_ieee_app/services/notification/widgets/circleimage.dart';
 import 'package:thermo_ieee_app/services/profile/pages/customer_profile.dart';
 
@@ -49,7 +48,7 @@ class Results extends StatelessWidget {
                           children: [
                             CircleImage(
                                 path: 'assets/images/photo1.jpg',
-                                radio: MediaQueryHelper.width(context) * 0.1),
+                                radio: MediaQueryHelper.width),
                             Text("Ebrahim Mohammed",
                                 style: AppTextStyles.largefont,
                                 maxLines: 1,

@@ -6,7 +6,7 @@ class TextFormAuth extends StatelessWidget {
   final TextEditingController? controller;
   final String? title, initValue;
   final String? Function(String? val)? validate;
-  final Function(dynamic)? save;
+  final Function(String?)? onChanged;
   final TextInputType? input;
   final bool? value;
 
@@ -14,7 +14,7 @@ class TextFormAuth extends StatelessWidget {
       {this.title,
       this.initValue,
       this.validate,
-      this.save,
+      this.onChanged,
       this.input,
       this.value = false,
       this.controller});
@@ -30,7 +30,7 @@ class TextFormAuth extends StatelessWidget {
         child: TextFormField(
           controller: controller,
           obscureText: value!,
-          onSaved: save,
+          onChanged: onChanged,
           validator: validate,
           keyboardType: input,
           initialValue: initValue,

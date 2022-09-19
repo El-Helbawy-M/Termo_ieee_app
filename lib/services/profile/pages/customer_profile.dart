@@ -19,6 +19,7 @@ class CustomerProfile extends StatelessWidget {
         builder: (context, state) {
       if (state is Done) {
         Customer model = state.model as Customer;
+        
         return ListView(
           children: [
             const ImageProfile(),

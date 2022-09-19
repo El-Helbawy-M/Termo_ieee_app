@@ -42,14 +42,9 @@ dependencies:
   firebase_core: ^1.22.0
   cloud_firestore: ^3.4.7
   firebase_storage: ^10.3.8
-<<<<<<< HEAD
   bloc: ^8.1.0
   flutter_bloc: ^8.1.1
   shared_preferences: ^2.0.15
-=======
-  bloc:
-  flutter_bloc:
->>>>>>> bdd09676e42f2106b977133b796773b0d40f220a
 
 
 dev_dependencies:
