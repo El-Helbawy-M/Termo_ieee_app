@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:thermo_ieee_app/helpers/images.dart';
-import 'package:thermo_ieee_app/services/home/bloc/bloc.dart';
-import 'package:thermo_ieee_app/services/home/bloc/state.dart';
-
-import '../../../../componants/custom_image.dart';
 import '../../../../helpers/colors.dart';
 import '../../../../helpers/text_styles.dart';
 import '../info_item.dart';
@@ -16,10 +10,7 @@ class RequestCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RequestBloc,RequestStates>(
-      listener: (context,state){},
-      builder: (context,state){
-        return InkWell(
+    return InkWell(
           onTap: (){},
           child: Container(
             decoration: BoxDecoration(
@@ -39,7 +30,8 @@ class RequestCard extends StatelessWidget {
                     ),
                     height: 160,
                     width: 8),
-                if(state is RequestGetSuccessState)
+
+
                   Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -50,7 +42,7 @@ class RequestCard extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8),
                           child: Text(
-                            "${state.requestModel.name}",
+                            "name",
                             style: AppTextStyles.w700.copyWith(
                               color: AppColors.mainColor,
                               fontSize: 16,
@@ -59,7 +51,7 @@ class RequestCard extends StatelessWidget {
                         ),
                         // short description
                         Text(
-                          "${state.requestModel.description}",
+                          "desc",
                           style: AppTextStyles.w500
                               .copyWith(fontSize: 14, color: Colors.grey),
                         ),
@@ -72,7 +64,7 @@ class RequestCard extends StatelessWidget {
                                 Icons.location_pin,
                                 size: 12,
                               ),
-                              label: "${state.requestModel.location}",
+                              label: "location",
                             ),
                              Padding(
                               padding: EdgeInsets.symmetric(horizontal: 16),
@@ -81,7 +73,7 @@ class RequestCard extends StatelessWidget {
                                   Icons.calendar_month,
                                   size: 12,
                                 ),
-                                label:"${state.requestModel.createData}",
+                                label:"date",
                               ),
                             ),
                             InfoItem(
@@ -99,14 +91,11 @@ class RequestCard extends StatelessWidget {
                     ),
                   ),
                 )
-                else
-                  const Center(child: CircularProgressIndicator())
+
               ],
             ),
           ),
         );
-      },
 
-    );
   }
 }

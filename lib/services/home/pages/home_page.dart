@@ -4,6 +4,7 @@ import 'package:thermo_ieee_app/helpers/colors.dart';
 import 'package:thermo_ieee_app/helpers/constraints.dart';
 import 'package:thermo_ieee_app/helpers/icons.dart';
 import 'package:thermo_ieee_app/helpers/text_styles.dart';
+import 'package:thermo_ieee_app/services/home/widgets/worker/worker_list.dart';
 import '../../../componants/custom_appbar.dart';
 import '../widgets/categories/category_panel.dart';
 import '../widgets/requests/requests_list.dart';
@@ -37,10 +38,10 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               //===========================
-              Text("Requests List",style: AppTextStyles.w700.copyWith(fontSize: 24,color: AppColors.mainColor)),
+              Text("Worker List",style: AppTextStyles.w700.copyWith(fontSize: 24,color: AppColors.mainColor)),
               const SizedBox(height: 24),
               //===========================
-              const RequstsList(),
+              const WorkerList(),
             ],
           ),
         ),
