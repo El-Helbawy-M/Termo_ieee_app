@@ -38,14 +38,13 @@ class HomePage extends StatelessWidget {
                 child: CategoriesPanel(),
               ),
               const SizedBox(height: 24),
-              Text("Requests List",
+              Text("Worker List",
                   style: AppTextStyles.w700
                       .copyWith(fontSize: 24, color: AppColors.mainColor)),
               const SizedBox(height: 24),
 
               const WorkerList(),
 
-              RequstsList(),
             ],
           ),
         ),

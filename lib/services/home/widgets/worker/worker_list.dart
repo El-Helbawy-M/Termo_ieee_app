@@ -20,7 +20,7 @@ class WorkerList extends StatelessWidget {
           return ListView.builder(
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
-            physics: const ScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
               return InkWell(
