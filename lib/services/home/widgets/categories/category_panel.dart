@@ -29,7 +29,7 @@ class _CategoriesPanelState extends State<CategoriesPanel> {
           (index) => CategoryItem(
             categoryName: "j$index",
             isSelected: selectedIndex == index,
-            onTap: (value)=>setState(()=>selectedIndex = index),
+            onTap: (value) => setState(() => selectedIndex = index),
           ),
         ),
       ),
