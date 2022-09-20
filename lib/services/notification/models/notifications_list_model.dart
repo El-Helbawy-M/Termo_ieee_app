@@ -8,7 +8,7 @@ class NotificationsListModel extends SingleMapper{
   @override
   Mapper fromJson(Map<String, dynamic> json) {
     NotificationsListModel model = NotificationsListModel();
-    for(int x = 0 ; x < json["notifications"];x++){
+    for(int x = 0 ; x < json["notifications"].length;x++){
       model.data.add(NotificationModel().fromJson(json["notifications"][x])as NotificationModel);
     }
     return model;

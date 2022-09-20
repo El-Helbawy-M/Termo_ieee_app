@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:thermo_ieee_app/services/authentication/bloc/authentication_bloc.dart';
 import 'package:thermo_ieee_app/services/authentication/widgets/text_form_auth.dart';
 
-import '../../../source/firebase/auth_helper.dart';
-import '../../filter/widgets/filter_dropdown.dart';
+import '../../../core/validator.dart';
 
-class CustomerRegister extends StatelessWidget {
+
+class CustomerRegister extends StatelessWidget with Validations {
   final List items = ['نجارة', 'سباكة', 'خياطة', 'كهرباء', 'تشطيب', 'ق', 'ش'];
-  final bool check;
-  CustomerRegister(this.check, {Key? key}) : super(key: key);
+  CustomerRegister( {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,19 +19,15 @@ class CustomerRegister extends StatelessWidget {
             input: TextInputType.name,
             initValue: AuthenticationBloc.instance.name,
             onChanged: AuthenticationBloc.instance.updateName,
-            validate: (value) {
-              if (value == null) print('Error');
-            },
+            validate: generalValidation,
           ),
-          if(check)const SizedBox(height: 20),
-          if(check)TextFormAuth(
+          const SizedBox(height: 20),
+          TextFormAuth(
             title: 'البريد الالكتروني',
             input: TextInputType.emailAddress,
             initValue: AuthenticationBloc.instance.email,
             onChanged: AuthenticationBloc.instance.updateEmail,
-            validate: (value) {
-              if (value == null) print('Error');
-            },
+            validate: emailValidation,
           ),
           const SizedBox(height: 20),
           TextFormAuth(
@@ -40,9 +35,7 @@ class CustomerRegister extends StatelessWidget {
             input: TextInputType.phone,
             onChanged: AuthenticationBloc.instance.updatePhone,
             initValue: AuthenticationBloc.instance.phone,
-            validate: (value) {
-              if (value == null) print('Error');
-            },
+            validate: phoneValidation,
           ),
           const SizedBox(height: 20),
           TextFormAuth(
@@ -51,21 +44,15 @@ class CustomerRegister extends StatelessWidget {
             onChanged: AuthenticationBloc.instance.updateAddress,
             initValue: AuthenticationBloc.instance.address,
             
-            validate: (value) {
-              if (value == null) print('Error');
-            },
+            validate: generalValidation,
           ),
           const SizedBox(height: 20),
           TextFormAuth(
             title: 'الرقم القومي',
             input: TextInputType.number,
             onChanged: (value) {},
-            validate: (value) {
-              if (value == null) print('Error');
-            },
+            validate: generalValidation,
           ),
-          if(!check)const SizedBox(height: 20),
-          if(!check)FilterDropdown(text: 'الخدمة', items: items),
           const SizedBox(height: 20),
           TextFormAuth(
             input: TextInputType.visiblePassword,
@@ -73,9 +60,7 @@ class CustomerRegister extends StatelessWidget {
             title: 'كلمة المرور',
             initValue: AuthenticationBloc.instance.password,
             onChanged: AuthenticationBloc.instance.updatePassword,
-            validate: (value) {
-              if (value == null) print('Error');
-            },
+            validate: passwordValidation,
           ),
           const SizedBox(height: 20),
           TextFormAuth(
@@ -84,9 +69,7 @@ class CustomerRegister extends StatelessWidget {
             value: true,
             initValue: AuthenticationBloc.instance.confirmPassword,
             onChanged: AuthenticationBloc.instance.updateConfirmPassword,
-            validate: (value) {
-              if (value == null) print('Error');
-            },
+            validate: passwordValidation,
           ),
           const SizedBox(height: 20),
         ],
