@@ -3,7 +3,7 @@ import 'package:thermo_ieee_app/source/puplic_model.dart';
 
 class Customer extends AppUser implements SingleMapper{
 
-  late String email;
+  late String? email;
   @override
   Mapper fromJson(Map<String, dynamic> json) {
     Customer customer = Customer();
@@ -12,8 +12,9 @@ class Customer extends AppUser implements SingleMapper{
     customer.address = json['address'];
     customer.city = json['city'];
     customer.id = json['id'];
-    customer.phone = json['phone'];
+    customer.phone = json['phone'] is String? int.parse(json['phone']):json['phone'];
     customer.email = json['email'];
     return customer;
   }
+  
 }

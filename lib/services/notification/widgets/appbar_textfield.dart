@@ -11,7 +11,7 @@ class Appbarfield extends StatelessWidget {
     return // Note: Same code is applied for the TextFormField as well
         SizedBox(
       //height: MediaQueryHelper.width(context)*6,
-      width: MediaQueryHelper.width(context) * 0.8,
+      width: MediaQueryHelper.width,
       child: Padding(
         padding: const EdgeInsets.only(right: 30, top: 5, bottom: 5),
         child: Center(
