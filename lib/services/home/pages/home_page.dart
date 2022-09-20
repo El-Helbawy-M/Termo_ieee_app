@@ -44,7 +44,6 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 24),
 
               const WorkerList(),
-               RequstsList(),
 
             ],
           ),

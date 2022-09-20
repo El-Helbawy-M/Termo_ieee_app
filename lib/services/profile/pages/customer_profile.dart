@@ -9,6 +9,7 @@ import 'package:thermo_ieee_app/services/profile/blocs/customer_profile_bloc.dar
 
 import '../../../componants/details_info_item.dart';
 import '../../../main_models/customer.dart';
+import '../../home/widgets/requests/requests_list.dart';
 import '../widgets/customer_image_profile.dart';
 
 class CustomerProfile extends StatelessWidget {
@@ -64,6 +65,7 @@ class CustomerProfile extends StatelessWidget {
                       ),
                     ],
                   ),
+
                 ),
               ],
             );
