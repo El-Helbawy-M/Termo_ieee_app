@@ -7,7 +7,19 @@ import '../../../../helpers/text_styles.dart';
 import '../info_item.dart';
 
 class RequestCard extends StatelessWidget {
-  const RequestCard({
+  String name;
+  String discription;
+  String? date;
+  String? location;
+  //Function func;
+
+   RequestCard({
+    required this.name,
+    required this.discription,
+    required this.date,
+    required this.location,
+   //  required this.func,
+
     Key? key,
   }) : super(key: key);
 
@@ -41,7 +53,7 @@ class RequestCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Text(
-                      "Name",
+                      name,
                       style: AppTextStyles.w700.copyWith(
                         color: AppColors.mainColor,
                         fontSize: 16,
@@ -50,7 +62,7 @@ class RequestCard extends StatelessWidget {
                   ),
                   // short description
                   Text(
-                    "adflashga\nadfafsdhgsdgads\nsadfasdgsadg",
+                    discription,
                     style: AppTextStyles.w500
                         .copyWith(fontSize: 14, color: Colors.grey),
                   ),
@@ -58,21 +70,21 @@ class RequestCard extends StatelessWidget {
                   // request summary inforamtion
                   Row(
                     children: [
-                      const InfoItem(
-                        leadingIcon: Icon(
+                       InfoItem(
+                        leadingIcon: const Icon(
                           Icons.location_pin,
                           size: 12,
                         ),
-                        label: "location",
+                        label: "$location",
                       ),
-                      const Padding(
+                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16),
                         child: InfoItem(
-                          leadingIcon: Icon(
+                          leadingIcon: const Icon(
                             Icons.calendar_month,
                             size: 12,
                           ),
-                          label: "date",
+                          label: "$date",
                         ),
                       ),
                       InfoItem(
