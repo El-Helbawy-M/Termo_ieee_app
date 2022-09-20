@@ -14,7 +14,7 @@ class RequstsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-      stream: FirebaseFirestore.instance.collection('Requests').snapshots(),
+      stream: FirebaseFirestore.instance.collection('Requests').orderBy('create_data').snapshots(),
       builder: (context, snapshot) {
 
         if (snapshot.hasData) {

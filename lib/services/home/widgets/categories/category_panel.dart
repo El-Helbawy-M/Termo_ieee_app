@@ -15,6 +15,13 @@ class CategoriesPanel extends StatefulWidget {
 class _CategoriesPanelState extends State<CategoriesPanel> {
   //variables
   int selectedIndex = -1;
+  List<String> data = [
+    'نقاشه',
+    'حداد',
+    'نجار',
+    'مبلط سراميك',
+    'كهربائي',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +34,7 @@ class _CategoriesPanelState extends State<CategoriesPanel> {
         children: List.generate(
           5,
           (index) => CategoryItem(
-            categoryName: "j$index",
+            categoryName: data[index],
             isSelected: selectedIndex == index,
             onTap: (value) => setState(() => selectedIndex = index),
           ),

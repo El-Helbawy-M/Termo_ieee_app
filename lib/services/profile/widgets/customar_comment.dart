@@ -22,7 +22,7 @@ class CustomerComment extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text('Mohamed', style: AppTextStyles.w700.copyWith(fontSize: 15)),
-              Text('لراجل دا شغله ميه ميه ولافراخ الجمعيه',style: AppTextStyles.w300.copyWith(fontSize: 15)),
+              Text('ممتاز جداا',style: AppTextStyles.w300.copyWith(fontSize: 15)),
             ],
           ),
           SizedBox(

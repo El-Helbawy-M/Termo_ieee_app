@@ -25,7 +25,7 @@ class WorkerList extends StatelessWidget {
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const ServiceProviderProfile()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>const ServiceProviderProfile()));
                 },
                 child: Container(
                   decoration: BoxDecoration(

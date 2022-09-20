@@ -22,4 +22,8 @@ class SharedHelper {
   currentLang() => pref.getString("lang");
 
   bool get isTokenSaved => pref.getString("id") != null;
+
+  clear (){
+    pref.remove('id');
+  }
 }

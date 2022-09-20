@@ -18,7 +18,7 @@ class ServiceProviderInfo extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text('010111111 ',
+              Text('01055115441 ',
                   style: AppTextStyles.w600.copyWith(fontSize: 15)),
               const Spacer(),
               Text('رقم التلفون ',
@@ -35,7 +35,7 @@ class ServiceProviderInfo extends StatelessWidget {
           ),
           Row(
             children: [
-              Text('ميه ميه ',
+              Text('ممتاز ',
                   style: AppTextStyles.w600.copyWith(fontSize: 15)),
               const Spacer(),
               Text('التقييم ',
@@ -52,7 +52,7 @@ class ServiceProviderInfo extends StatelessWidget {
           ),
           Row(
             children: [
-              Text('جمب عبسلام ',
+              Text('المنصوره ',
                   style: AppTextStyles.w600.copyWith(fontSize: 15)),
               const Spacer(),
               Text('العنوان',
@@ -69,7 +69,7 @@ class ServiceProviderInfo extends StatelessWidget {
           ),
           Row(
             children: [
-              Text('الحرب العالميه ',
+              Text('2020 ',
                   style: AppTextStyles.w600.copyWith(fontSize: 15)),
               const Spacer(),
               Text('عضو منذ',
