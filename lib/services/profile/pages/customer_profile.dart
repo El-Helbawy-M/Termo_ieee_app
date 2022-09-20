@@ -8,6 +8,7 @@ import 'package:thermo_ieee_app/services/profile/blocs/customer_profile_bloc.dar
 
 import '../../../componants/details_info_item.dart';
 import '../../../main_models/customer.dart';
+import '../../home/widgets/requests/requests_list.dart';
 import '../widgets/customer_image_profile.dart';
 
 class CustomerProfile extends StatelessWidget {
@@ -44,18 +45,7 @@ class CustomerProfile extends StatelessWidget {
                         .copyWith(fontSize: 14, color: AppColors.mainColor),
                   ),
                   const SizedBox(height: 8),
-                  Column(
-                    children: List.generate(
-                        5,
-                        (index) => RequestCard(
-                            name: "name",
-                            discription: "discription",
-                            date: "date",
-                            location: "location",
-
-
-                        )),
-                  ),
+                  RequstsList(),
                 ],
               ),
             ),
