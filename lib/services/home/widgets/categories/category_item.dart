@@ -29,7 +29,7 @@ class CategoryItem extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 4),
         child: Center(
           child: Text(
-            "c1",
+            categoryName,
             style: TextStyle(
               color: _checkColor(!isSelected),
             ),

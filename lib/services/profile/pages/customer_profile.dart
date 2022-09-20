@@ -51,18 +51,7 @@ class CustomerProfile extends StatelessWidget {
                             .copyWith(fontSize: 14, color: AppColors.mainColor),
                       ),
                       const SizedBox(height: 8),
-                      Column(
-                        children: List.generate(
-                            5,
-                            (index) => RequestCard(
-                                name: "name",
-                                discription: "discription",
-                                date: "date",
-                                location: "location",
-          
-          
-                            )),
-                      ),
+                      RequstsList(),
                     ],
                   ),
 

@@ -6,6 +6,7 @@ import 'package:thermo_ieee_app/services/more/widgets/profile_menu_item.dart';
 import '../../../helpers/text_styles.dart';
 import '../../../navigation/navigator.dart';
 import '../../../navigation/routes.dart';
+import '../../../source/shared_helper.dart';
 
 class MenuOptions extends StatelessWidget {
   const MenuOptions({
@@ -61,10 +62,10 @@ class MenuOptions extends StatelessWidget {
           ProfileMenuItem(
             "logout",
             prefixIconName: Icon(Icons.logout),
-            // onClick: () {
-            //   SharedHelper.sharedHelper!.logout();
-            //   LogoutBloc.instance.add(Click());
-            // },
+            onClick: () {
+              SharedHelper.instance.clear();
+              CustomNavigator.push(Routes.login);
+            },
           )
         ],
       ),
