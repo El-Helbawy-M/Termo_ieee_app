@@ -19,7 +19,7 @@ class CustomerProfile extends StatelessWidget {
         builder: (context, state) {
       if (state is Done) {
         Customer model = state.model as Customer;
-        
+
         return ListView(
           children: [
             const ImageProfile(),
@@ -27,10 +27,11 @@ class CustomerProfile extends StatelessWidget {
             DetailsInfoItem(title: "Name", value: model.name ?? "Mohamed"),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
-              child:
-                  DetailsInfoItem(title: "Email", value: model.email??"Mohamed@gmail.com"),
+              child: DetailsInfoItem(
+                  title: "Email", value: model.email ?? "Mohamed@gmail.com"),
             ),
-            DetailsInfoItem(title: "Location", value: model.address??"El-Mahallah"),
+            DetailsInfoItem(
+                title: "Location", value: model.address ?? "El-Mahallah"),
             const SizedBox(height: 24),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -44,17 +45,25 @@ class CustomerProfile extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Column(
-                    children: List.generate(5, (index) => const RequestCard()),
+                    children: List.generate(
+                        5,
+                        (index) => RequestCard(
+                            name: "name",
+                            discription: "discription",
+                            date: "date",
+                            location: "location",
+
+
+                        )),
                   ),
                 ],
               ),
             ),
           ],
         );
-      }else if (state is Empty || state is Start){
+      } else if (state is Empty || state is Start) {
         return const Center(child: Text("No data"));
-      } 
-      else {
+      } else {
         return const Center(
           child: CircularProgressIndicator(),
         );
