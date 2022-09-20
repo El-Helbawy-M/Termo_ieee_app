@@ -7,7 +7,21 @@ import '../../../../helpers/colors.dart';
 import '../info_item.dart';
 
 class DetailsCard extends StatelessWidget {
-  const DetailsCard({Key? key}) : super(key: key);
+  String name;
+  String discription;
+  String? date;
+  String? location;
+  //Function func;
+
+  DetailsCard({
+    required this.name,
+    required this.discription,
+    required this.date,
+    required this.location,
+    //  required this.func,
+
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
