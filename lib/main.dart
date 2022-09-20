@@ -27,7 +27,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Thermo App',
-        theme: ThemeData(fontFamily: "default"),
+        theme: ThemeData(
+          appBarTheme: const AppBarTheme(
+            iconTheme: IconThemeData(color: Colors.black)
+          ),
+            fontFamily: "default"),
         initialRoute: Routes.splash,
 
         navigatorKey: CustomNavigator.navigatorState,
