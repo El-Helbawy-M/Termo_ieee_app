@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:thermo_ieee_app/helpers/colors.dart';
 import 'package:thermo_ieee_app/services/home/pages/home_page.dart';
 import 'package:thermo_ieee_app/services/profile/blocs/customer_profile_bloc.dart';
+import 'package:thermo_ieee_app/services/request/screens/request_details.dart';
 
 import '../../chat/pages/chats.dart';
 import '../../notification/pages/notification_page.dart';
@@ -59,7 +60,7 @@ class _MainPageState extends State<MainPage> {
       backgroundColor: Colors.white,
       //====================================
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder:(context)=>RequestDetails()));},
         backgroundColor: AppColors.mainColor,
         child: const Icon(Icons.add, color: Colors.white),
       ),

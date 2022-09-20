@@ -49,11 +49,7 @@ class _RequestDetailsState extends State<RequestDetails> {
                   title: 'Location',
                   hint: 'Enter your location',
                 ),
-                Date(
-                  context: context,
-                  date: date,
-                  text: date == null ? 'Choose the date' : '${date}',
-                ),
+                Date(context: context),
                 SizedBox(
                   height: 60,
                 ),

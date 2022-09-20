@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:thermo_ieee_app/helpers/colors.dart';
 
 class Date extends StatefulWidget {
-  DateTime? date;
   final String? text;
   final BuildContext context;
 
-  Date({this.date, this.text, required this.context});
+  Date({this.text, required this.context});
 
   @override
   _DateState createState() => _DateState();
 }
 
 class _DateState extends State<Date> {
+  DateTime selectedDate = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,19 +25,16 @@ class _DateState extends State<Date> {
         ),
         InkWell(
           onTap: () async {
-            await showDatePicker(
-              context: widget.context,
-              initialDate: DateTime.now(),
-              firstDate: DateTime(2001, 1, 1),
-              lastDate: DateTime(2025, 12, 30),
-            ).then((value) {
-              if (value != null) {
-                setState(() {
-                  widget.date = value;
-                  print(widget.date);
-                });
-              }
-            });
+            final DateTime? picked = await showDatePicker(
+                context: context,
+                initialDate: selectedDate,
+                firstDate: DateTime(2015, 8),
+                lastDate: DateTime(2101));
+            if (picked != null && picked != selectedDate) {
+              setState(() {
+                selectedDate = picked;
+              });
+            }
           },
           child: Container(
               alignment: Alignment.centerLeft,
@@ -47,7 +45,7 @@ class _DateState extends State<Date> {
                 color: AppColors.hintFieldColor,
               ),
               child: Text(
-                widget.text!,
+                "${selectedDate.toLocal()}".split(' ')[0],
                 style: TextStyle(fontSize: 15, color: Colors.grey.shade600),
               )),
         ),
