@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:thermo_ieee_app/services/home/pages/home_page.dart';
 import 'package:thermo_ieee_app/services/main/pages/main_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:thermo_ieee_app/services/authentication/screens/login_screen.dart';
+import 'package:thermo_ieee_app/services/request/screens/request_details.dart';
 import 'firebase_options.dart';
 
 void main() async  {
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
       title: 'Thermo App',
       theme: ThemeData(fontFamily: "default"),
       routes: {
-        "/":(context)=>LoginScreen(),
+        "/":(context)=>RequestDetails(),
       },
 
       // to tell the app what the language should support
