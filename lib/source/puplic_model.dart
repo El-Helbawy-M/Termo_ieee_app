@@ -11,8 +11,10 @@ abstract class Mapper {
 
 abstract class SingleMapper implements Mapper {
   Mapper fromJson(Map<String, dynamic> json);
+  
 }
 
 abstract class ListMapper implements Mapper {
   Mapper fromJsonList(List json);
+  
 }

@@ -14,8 +14,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQueryHelper.width(context),
-      height: MediaQueryHelper.height(context),
+      width: MediaQueryHelper.width,
+      height: MediaQueryHelper.height,
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal:24),

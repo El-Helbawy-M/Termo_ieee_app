@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:thermo_ieee_app/componants/custom_image.dart';
+
 import 'package:thermo_ieee_app/helpers/colors.dart';
 import 'package:thermo_ieee_app/services/home/pages/home_page.dart';
+import 'package:thermo_ieee_app/services/profile/blocs/customer_profile_bloc.dart';
 
 import '../../chat/pages/chats.dart';
 import '../../notification/pages/notification_page.dart';
+import '../../products/screen/products_screen.dart';
 import '../../profile/pages/customer_profile.dart';
 
 class MainPage extends StatefulWidget {
@@ -17,7 +19,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   // variables
   int currentScreen = 0;
-  List<Widget> screens = const [HomePage(),ChatsPage(), NotificationPage(),  CustomerProfile()];
+  List<Widget> screens =  [const HomePage(),const ChatsPage(), NotificationPage(), const CustomerProfile()];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

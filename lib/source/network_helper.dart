@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:thermo_ieee_app/config/api_routes.dart';
 import 'package:thermo_ieee_app/source/puplic_model.dart';
 
 class NetworkHelper {
@@ -15,7 +14,7 @@ class NetworkHelper {
       // NetworkHelper.generateBaseUrl(urlCode: urlCode, schema: schema);
       _instance = NetworkHelper._internal();
       _dio = Dio();
-      _dio!.options.baseUrl = ApiRoutes.baseUrl;
+      // _dio!.options.baseUrl = ApiRoutes.baseUrl;
     }
     return _instance!;
   }

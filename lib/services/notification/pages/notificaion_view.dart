@@ -24,7 +24,7 @@ class Notificationview extends StatelessWidget {
               children: [
                 CircleImage(path: 'assets/images/photo1.jpg', radio: 100),
                 Container(
-                    height: MediaQueryHelper.height(context) * 0.4,
+                    height: MediaQueryHelper.height,
                     width: 300,
                     margin: const EdgeInsets.all(30),
                     padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),

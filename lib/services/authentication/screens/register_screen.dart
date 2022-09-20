@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:thermo_ieee_app/config/app_states.dart';
 import 'package:thermo_ieee_app/helpers/colors.dart';
 import '../../../source/firebase/auth_helper.dart';
 import '../../main/pages/main_page.dart';
+import '../bloc/authentication_bloc.dart';
 import '../screens/login_screen.dart';
 import '../widgets/customer_register.dart';
 import '../widgets/clickable_container.dart';
@@ -22,99 +25,108 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey();
   bool selected = true;
-  TextEditingController? emailTextController = TextEditingController();
-  TextEditingController? passwordTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Logo(),
-                  ScreenTitle(title: 'تسجيل مستخدم جديد'),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      RegisterType(
-                        title: '   مستخدم    ',
-                        function: () {
-                          setState(() {
-                            selected = true;
-                          });
-                        },
-                        textColor: selected
-                            ? AppColors.mainColor
-                            : AppColors.hintColor,
-                        color: selected ? AppColors.mainColor : Colors.white,
-                      ),
-                      RegisterType(
-                        title: ' صاحب عمل',
-                        function: () {
-                          setState(() {
-                            selected = false;
-                          });
-                        },
-                        textColor: !selected
-                            ? AppColors.mainColor
-                            : AppColors.hintColor,
-                        color: !selected ? AppColors.mainColor : Colors.white,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  selected
-                      ? CustomerRegister(
-                          emailController: emailTextController,
-                          passwordController: passwordTextController,
-                        )
-                      : Column(
-                          children: [
-                            CustomerRegister(
-                              emailController: emailTextController,
-                              passwordController: passwordTextController,
-                            ),
-                            WorkerRegister()
-                          ],
-                        ),
-                  RoutetButton(
-                    title: 'تسجيل',
-                    submit: () {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        FirebaseAuther().signUpWithEmail(
-                            context: context,
-                            email: emailTextController!.text,
-                            password: passwordTextController!.text);
-                      } else
-                        print('error');
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Logo(),
+                const ScreenTitle(title: 'تسجيل مستخدم جديد'),
+                Expanded(
+                  child: BlocBuilder<AuthenticationBloc, AppStates>(
+                    builder: (context, state) {
+                      return state is Loading
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                          child: RegisterType(
+                                            title: '   مستخدم    ',
+                                            function: () {
+                                              setState(() {
+                                                selected = true;
+                                                AuthenticationBloc.instance
+                                                    .setType(UserType.customer);
+                                              });
+                                            },
+                                            textColor: selected
+                                                ? AppColors.mainColor
+                                                : AppColors.hintColor,
+                                            color: selected
+                                                ? AppColors.mainColor
+                                                : Colors.white,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 24),
+                                        Expanded(
+                                          child: RegisterType(
+                                            title: ' صاحب عمل',
+                                            function: () {
+                                              setState(() {
+                                                selected = false;
+
+                                                AuthenticationBloc.instance
+                                                    .setType(UserType.worker);
+                                              });
+                                            },
+                                            textColor: !selected
+                                                ? AppColors.mainColor
+                                                : AppColors.hintColor,
+                                            color: !selected
+                                                ? AppColors.mainColor
+                                                : Colors.white,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  CustomerRegister(selected),
+                                ],
+                              ),
+                            );
                     },
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ClickableContainer(
-                        title: 'تسجيل الدخول',
-                        route: LoginScreen(),
-                      ),
-                      Text('  لديك حساب؟'),
-                    ],
-                  )
-                ],
-              ),
+                ),
+                RoutetButton(
+                  title: 'تسجيل',
+                  submit: () {
+                    // if (_formKey.currentState!.validate()) {
+                      // _formKey.currentState!.save();
+                      AuthenticationBloc.instance.register();
+                    // } else
+                      // print('error');
+                  },
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    ClickableContainer(
+                      title: 'تسجيل الدخول',
+                      route: LoginScreen(),
+                    ),
+                    Text('  لديك حساب؟'),
+                  ],
+                )
+              ],
             ),
           ),
         ),

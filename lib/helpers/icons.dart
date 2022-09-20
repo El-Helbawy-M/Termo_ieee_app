@@ -5,4 +5,5 @@ abstract class AppIcons{
   static const String profile = "profile";
   static const String home = "home";
   static const String notification = "notification";
+  static const String arrow = "arrow";
 }

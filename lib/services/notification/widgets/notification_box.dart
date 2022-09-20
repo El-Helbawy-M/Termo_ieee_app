@@ -1,33 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:thermo_ieee_app/helpers/colors.dart';
+import 'package:thermo_ieee_app/helpers/constraints.dart';
 import 'package:thermo_ieee_app/services/notification/widgets/circleimage.dart';
 
 import '../../../helpers/text_styles.dart';
+import '../models/notification_model.dart';
 
 class BoxNotification extends StatelessWidget {
-  final String message;
-  final void Function() ontab;
-  final String path;
-
+  // final void Function() ontab;
+  final NotificationModel? notification;
   const BoxNotification(
       {Key? key,
-      required this.message,
-      required this.ontab,
-      required this.path})
+      this.notification,})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:  BoxDecoration(
-        border: Border(bottom: BorderSide(width: 1,color: Colors.grey[300]!))
+      decoration:const  BoxDecoration(
+        color: AppColors.hintFieldColor,
       ),
-      padding: const EdgeInsets.only(top: 12,bottom: 4),
-      margin: const EdgeInsets.symmetric(vertical: 4),
-      child: ListTile(
-        onTap: ontab,
-        title:
-            Text(message, style: AppTextStyles.w800),
-        leading: CircleImage(path: path),
+      height: 70,
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      width: MediaQueryHelper.width,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(notification!=null?notification!.title!:"title",style: AppTextStyles.w600.copyWith(fontSize: 13)),
+          const SizedBox(height: 8),
+          Text(notification!=null?notification!.content!:"content", style: AppTextStyles.w500.copyWith(fontSize: 10)),
+        ],
       ),
     );
   }

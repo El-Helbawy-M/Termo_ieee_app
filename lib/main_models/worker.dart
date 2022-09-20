@@ -4,7 +4,7 @@ import '../source/puplic_model.dart';
 
 class Worker extends AppUser implements SingleMapper{
 
-  late String jobType;
+  late String? jobType;
   @override
   Mapper fromJson(Map<String, dynamic> json) {
     Worker worker = Worker();
