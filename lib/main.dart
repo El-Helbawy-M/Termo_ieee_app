@@ -7,6 +7,7 @@ import 'package:thermo_ieee_app/services/main/pages/main_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:thermo_ieee_app/source/shared_helper.dart';
 import 'firebase_options.dart';
+import 'helpers/localization.dart';
 import 'navigation/navigator.dart';
 
 void main() async  {
@@ -27,7 +28,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Thermo App',
-        theme: ThemeData(fontFamily: "default"),
+        theme: ThemeData(
+          appBarTheme: const AppBarTheme(
+            iconTheme: IconThemeData(color: Colors.black)
+          ),
+            fontFamily: "default"),
         initialRoute: Routes.splash,
 
         navigatorKey: CustomNavigator.navigatorState,
@@ -40,10 +45,12 @@ class MyApp extends StatelessWidget {
 
         // to tell the app what the components should follow the determined language
         localizationsDelegates: const [
+          AppLocale.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
+        locale: const Locale("en"),
 
         // this is a callback, it's executed when the user open the app or change the localaization of the mobile
         // what is its jop?

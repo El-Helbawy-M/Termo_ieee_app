@@ -5,6 +5,8 @@ import 'package:thermo_ieee_app/services/authentication/screens/register_screen.
 import 'package:thermo_ieee_app/services/main/pages/main_page.dart';
 import 'package:thermo_ieee_app/services/splash/screens/splash_screen.dart';
 
+import '../services/profile/pages/customer_profile.dart';
+
 const begin = Offset(0.0, 1.0);
 const end = Offset.zero;
 const curve = Curves.easeInOut;
@@ -66,6 +68,18 @@ class CustomNavigator {
             );
           },
         );
+        case Routes.profile:
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              const CustomerProfile(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return SlideTransition(
+              position: animation.drive(tween),
+              child: child,
+            );
+          },
+        );
+        
     }
     return MaterialPageRoute(builder: (_) => const MainPage());
   }

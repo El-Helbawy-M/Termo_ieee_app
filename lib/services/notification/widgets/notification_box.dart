@@ -9,15 +9,16 @@ import '../models/notification_model.dart';
 class BoxNotification extends StatelessWidget {
   // final void Function() ontab;
   final NotificationModel? notification;
-  const BoxNotification(
-      {Key? key,
-      this.notification,})
-      : super(key: key);
+
+  const BoxNotification({
+    Key? key,
+    this.notification,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:const  BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColors.hintFieldColor,
       ),
       height: 70,
@@ -28,9 +29,12 @@ class BoxNotification extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(notification!=null?notification!.title!:"title",style: AppTextStyles.w600.copyWith(fontSize: 13)),
+
+          Text(notification != null ? notification!.title! : "title",
+              style: AppTextStyles.w600.copyWith(fontSize: 13)),
           const SizedBox(height: 8),
-          Text(notification!=null?notification!.content!:"content", style: AppTextStyles.w500.copyWith(fontSize: 10)),
+          Text(notification != null ? notification!.content! : "content",
+              style: AppTextStyles.w500.copyWith(fontSize: 10)),
         ],
       ),
     );

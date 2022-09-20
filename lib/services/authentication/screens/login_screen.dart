@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> with Validations {
                   ),
                 ),
                 RoutetButton(
-                  title: getLang("login"),
+                  title: getLang(context,"login"),
                   submit: () {
                     if (_formKey.currentState!.validate()) {
                       AuthenticationBloc.instance.siginIn();
@@ -88,11 +88,11 @@ class _LoginScreenState extends State<LoginScreen> with Validations {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children:  [
-                    Text(getLang("you dont't have an account ? ")),
+                    Text(getLang(context,"you dont't have an account ? ")),
                     InkWell(
-                      onTap: CustomNavigator.push(Routes.register,replace: true),
+                      onTap: ()=>CustomNavigator.push(Routes.register,replace: true),
                       child: Text(
-                        getLang("register"),
+                        getLang(context,"register"),
                         style: TextStyle(color: AppColors.mainColor),
                       ),
                     ),

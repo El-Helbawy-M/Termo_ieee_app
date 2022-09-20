@@ -10,5 +10,6 @@ abstract class ProviderList {
     BlocProvider<CustomerProfileBloc>(create: (_) => CustomerProfileBloc()),
     BlocProvider<AuthenticationBloc>(create: (_)=>AuthenticationBloc()),
     BlocProvider<NotificationBloc>(create: (_)=>NotificationBloc()),
+
   ];
 }

@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thermo_ieee_app/config/app_states.dart';
-
 import 'package:thermo_ieee_app/helpers/colors.dart';
 import 'package:thermo_ieee_app/services/home/pages/home_page.dart';
+import 'package:thermo_ieee_app/services/more/pages/more_page.dart';
 import 'package:thermo_ieee_app/services/notification/bloc/notification_bloc.dart';
 import 'package:thermo_ieee_app/services/profile/blocs/customer_profile_bloc.dart';
-
 import '../../chat/pages/chats.dart';
 import '../../notification/pages/notification_page.dart';
-import '../../products/screen/products_screen.dart';
-import '../../profile/pages/customer_profile.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -56,9 +53,9 @@ class _MainPageState extends State<MainPage> {
             label: "notifications",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            activeIcon: Icon(Icons.person),
-            label: "profile",
+            icon: Icon(Icons.more_horiz_outlined),
+            activeIcon: Icon(Icons.more_horiz),
+            label: "more",
           ),
         ],
       ),
@@ -80,7 +77,7 @@ class _MainPageState extends State<MainPage> {
                 const HomePage(),
                 const ChatsPage(),
                 NotificationPage(),
-                const CustomerProfile()
+                const MorePage()
               ];
               return screens[currentScreen];
             } else

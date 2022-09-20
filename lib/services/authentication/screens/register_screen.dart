@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thermo_ieee_app/config/app_states.dart';
@@ -6,17 +5,12 @@ import 'package:thermo_ieee_app/helpers/colors.dart';
 import 'package:thermo_ieee_app/helpers/localization.dart';
 import 'package:thermo_ieee_app/navigation/navigator.dart';
 import 'package:thermo_ieee_app/navigation/routes.dart';
-import '../../../source/firebase/auth_helper.dart';
-import '../../main/pages/main_page.dart';
+import 'package:thermo_ieee_app/services/authentication/screens/login_screen.dart';
 import '../bloc/authentication_bloc.dart';
-import '../screens/login_screen.dart';
 import '../widgets/customer_register.dart';
-import '../widgets/clickable_container.dart';
 import '../widgets/logo.dart';
 import '../widgets/route_button.dart';
 import '../widgets/screen_title.dart';
-import '../widgets/register_type.dart';
-import '../widgets/worker_register.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -26,7 +20,6 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey();
   bool selected = true;
 
   @override
@@ -37,7 +30,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Form(
-            key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,22 +50,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 RoutetButton(
-                  title: getLang("register"),
+                  title: getLang(context,"register"),
                   submit: () {
-                    if (_formKey.currentState!.validate()) {
+                    // if (_formKey.currentState!.validate()) {
                       AuthenticationBloc.instance.register();
-                    }
+                    // }
                   },
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:  [
 
-                    Text(getLang("you have an account ? ")),
+                    Text(getLang(context,"you have an account ? ")),
                     InkWell(
-                      onTap: CustomNavigator.push(Routes.register,replace: true),
+                      onTap:()=> Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>LoginScreen())),
                       child: Text(
-                        getLang("login"),
+                        getLang(context,"login"),
                         style: TextStyle(color: AppColors.mainColor),
                       ),
                     ),
