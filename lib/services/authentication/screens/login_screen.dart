@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thermo_ieee_app/config/app_states.dart';
+import 'package:thermo_ieee_app/core/validator.dart';
 import 'package:thermo_ieee_app/services/authentication/screens/register_screen.dart';
 import 'package:thermo_ieee_app/services/authentication/widgets/logo.dart';
 import 'package:thermo_ieee_app/source/firebase/auth_helper.dart';
+import '../../../helpers/colors.dart';
+import '../../../helpers/localization.dart';
+import '../../../navigation/navigator.dart';
+import '../../../navigation/routes.dart';
 import '../bloc/authentication_bloc.dart';
 import '../widgets/clickable_container.dart';
 import '../widgets/route_button.dart';
@@ -17,10 +22,8 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> with Validations {
   final GlobalKey<FormState> _formKey = GlobalKey();
-  TextEditingController? emailTextController = TextEditingController();
-  TextEditingController? passwordTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 initValue: AuthenticationBloc.instance.email,
                                 onChanged:
                                     AuthenticationBloc.instance.updateEmail,
-                                validate: (value) {
-                                  if (value == null) print('Error');
-                                },
+                                validate: emailValidation,
                                 input: TextInputType.emailAddress,
                               ),
                               const SizedBox(height: 20),
@@ -63,9 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 initValue: AuthenticationBloc.instance.password,
                                 onChanged:
                                     AuthenticationBloc.instance.updatePassword,
-                                validate: (value) {
-                                  if (value == null) print('Error');
-                                },
+                                validate: passwordValidation,
                                 input: TextInputType.visiblePassword,
                                 value: true,
                               ),
@@ -78,21 +77,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 RoutetButton(
-                  title: 'دخول',
+                  title: getLang("login"),
                   submit: () {
-                    AuthenticationBloc.instance.siginIn();
+                    if (_formKey.currentState!.validate()) {
+                      AuthenticationBloc.instance.siginIn();
+                    }
                   },
                 ),
                 const SizedBox(height: 20),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ClickableContainer(
-                      title: 'انشاء حساب جديد؟',
-                      route: RegisterScreen(),
-                    ),
-                    ClickableContainer(
-                      title: 'نسيت كلمة المرور؟',
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children:  [
+                    Text(getLang("you dont't have an account ? ")),
+                    InkWell(
+                      onTap: CustomNavigator.push(Routes.register,replace: true),
+                      child: Text(
+                        getLang("register"),
+                        style: TextStyle(color: AppColors.mainColor),
+                      ),
                     ),
                   ],
                 )

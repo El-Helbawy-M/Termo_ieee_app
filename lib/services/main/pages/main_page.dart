@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:thermo_ieee_app/config/app_states.dart';
 
 import 'package:thermo_ieee_app/helpers/colors.dart';
 import 'package:thermo_ieee_app/services/home/pages/home_page.dart';
+import 'package:thermo_ieee_app/services/notification/bloc/notification_bloc.dart';
 import 'package:thermo_ieee_app/services/profile/blocs/customer_profile_bloc.dart';
 
 import '../../chat/pages/chats.dart';
@@ -19,15 +22,19 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   // variables
   int currentScreen = 0;
-  List<Widget> screens =  [const HomePage(),const ChatsPage(), NotificationPage(), const CustomerProfile()];
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentScreen,
-        onTap: (index) => setState(() => currentScreen = index),
+        onTap: (index) {
+          setState(() => currentScreen = index);
+          if(index == 2){
+            NotificationBloc.instance.getNotifications();
+          }
+        },
         type: BottomNavigationBarType.fixed,
         selectedItemColor: AppColors.mainColor,
         unselectedItemColor: Colors.grey,
@@ -58,14 +65,29 @@ class _MainPageState extends State<MainPage> {
       //====================================
       backgroundColor: Colors.white,
       //====================================
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: AppColors.mainColor,
-        child: const Icon(Icons.add, color: Colors.white),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {},
+      //   backgroundColor: AppColors.mainColor,
+      //   child: const Icon(Icons.add, color: Colors.white),
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       //====================================
-      body: SafeArea(child: screens[currentScreen]),
+      body: SafeArea(
+        child: BlocBuilder<CustomerProfileBloc, AppStates>(
+          builder: (context, state) {
+            if (state is Done) {
+              List<Widget> screens = [
+                const HomePage(),
+                const ChatsPage(),
+                NotificationPage(),
+                const CustomerProfile()
+              ];
+              return screens[currentScreen];
+            } else
+              return Center(child: CircularProgressIndicator());
+          },
+        ),
+      ),
     );
   }
 }

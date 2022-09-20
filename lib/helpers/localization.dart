@@ -49,8 +49,8 @@ class _AppLocalDelegate extends LocalizationsDelegate<AppLocale> {
   bool shouldReload(_AppLocalDelegate old) => false;
 }
 
-getLang(BuildContext context, String key) {
-  return AppLocale.of(context).getTranslated(key);
+getLang(String key) {
+  return AppLocale.of(CustomNavigator.navigatorState.currentContext!).getTranslated(key);
 }
 
 String currentLang()=>AppLocale.of(CustomNavigator.navigatorState.currentContext!).locale.languageCode;
