@@ -36,7 +36,7 @@ class _CategoriesPanelState extends State<CategoriesPanel> {
           (index) => CategoryItem(
             categoryName: data[index],
             isSelected: selectedIndex == index,
-            onTap: (value)=>setState(()=>selectedIndex = index),
+            onTap: (value) => setState(() => selectedIndex = index),
           ),
         ),
       ),
