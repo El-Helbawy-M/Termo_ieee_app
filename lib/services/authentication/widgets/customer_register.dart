@@ -6,7 +6,7 @@ import '../../../core/validator.dart';
 
 
 class CustomerRegister extends StatelessWidget with Validations {
-  final List items = ['نجارة', 'سباكة', 'خياطة', 'كهرباء', 'تشطيب', 'ق', 'ش'];
+  final List items = ['نجارة', 'سباكة', 'خياطة', 'كهرباء', 'تشطيب',];
   CustomerRegister( {Key? key}) : super(key: key);
 
   @override
