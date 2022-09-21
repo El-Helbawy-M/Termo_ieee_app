@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
-import 'package:thermo_ieee_app/services/chat/screens/chat_details.dart';
+import 'package:thermo_ieee_app/helpers/colors.dart';
 
 import '../../../helpers/text_styles.dart';
+import '../pages/chat_room_screen.dart';
 
 class BuildChatItems extends StatelessWidget {
   const BuildChatItems({
@@ -11,12 +11,17 @@ class BuildChatItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
-      child: InkWell(
-        onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>const ChatDetailsScreen()));
-        },
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const ChatRoomScreen()));
+      },
+      child: Container(
+        height: 60,
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 1,color: Colors.grey[300]!),),),
         child: Row(
           children: [
             const CircleAvatar(
@@ -30,33 +35,37 @@ class BuildChatItems extends StatelessWidget {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children:  [
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 Text(
-                  'Mohamed',style: AppTextStyles.w600.copyWith(fontSize: 17 ),
-
+                  'Mohamed',
+                  style: AppTextStyles.w600.copyWith(fontSize: 16,color: AppColors.mainColor,height: 1),
                 ),
-                SizedBox(
-                  height: 4,
+                // const SizedBox(height: 4),
+                Text(
+                  'Hallo Mohamed',
+                  style: AppTextStyles.w400.copyWith(fontSize: 14),
                 ),
-                Text('Hallo Mohamed',style: AppTextStyles.w500.copyWith(fontSize: 14 )),
               ],
             ),
             const Spacer(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 Text(
                   '3:55 Am',
+                  style: AppTextStyles.w500.copyWith(fontSize: 12,color: AppColors.mainColor),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 4,
                 ),
-                CircleAvatar(
-                  radius: 10,
-                  backgroundColor: Colors.black,
+                const CircleAvatar(
+                  radius: 8,
+                  backgroundColor:  AppColors.mainColor,
                   child: Text(
                     '2',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white,fontSize: 10),
                   ),
                 )
               ],

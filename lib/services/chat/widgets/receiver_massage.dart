@@ -24,7 +24,7 @@ class ReceiverMassage extends StatelessWidget {
           vertical: 10,
           horizontal: 10,
         ),
-        child: Text('Hallo ياعم الحج '),
+        child: Text('Hallo  '),
       ),
     );
   }
